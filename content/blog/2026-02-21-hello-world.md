@@ -29,7 +29,7 @@ learning. That might include concepts in a programming language
 that I'm currently learning (or one that I already know), architectural patterns
 or anything else that I find interesting about software engineering.
 
-Another reason is that I am a terrible writer and maybe with some practise I'll
+Another reason for starting a blog is that I am a terrible writer and maybe with some practise I'll
 become a not-so-bad writer. Time will show..
 
 I'll keep this blog AI free, because that would defeat
