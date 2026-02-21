@@ -33,4 +33,5 @@ Another reason is that I am a terrible writer and maybe with some practise I'll
 become a not-so-bad writer. Time will show..
 
 I'll keep this blog AI free, because that would defeat
-the purpose and there's already too much AI slop on the internet.
+the purpose and there's already enough AI slop on the internet. I'll create
+real human slop ;)
