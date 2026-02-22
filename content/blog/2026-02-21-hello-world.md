@@ -30,7 +30,7 @@ that I'm currently learning (or one that I already know), architectural patterns
 or anything else that I find interesting about software engineering.
 
 Another reason for starting a blog is that I am a terrible writer and maybe with some practise I'll
-become a not-so-bad writer. Time will show..
+become a not-so-bad writer. Time will tell..
 
 I'll keep this blog AI free, because that would defeat
 the purpose and there's already enough AI slop on the internet. I'll create
