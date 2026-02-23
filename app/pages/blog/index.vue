@@ -25,9 +25,18 @@ useSeoMeta({
   <nav>
     <ul v-if="allPosts">
       <li v-for="item in allPosts" :key="item.path">
-        <NuxtLink :to="item.path"
-          >{{ item.title }} - {{ new Date(item.date).toDateString() }}</NuxtLink
-        >
+        <NuxtLink :to="item.path">
+          <time v-if="item.date" :datetime="item.date">
+            {{
+              new Date(item.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }} </time
+          >:
+          {{ item.title }}
+        </NuxtLink>
       </li>
     </ul>
   </nav>
