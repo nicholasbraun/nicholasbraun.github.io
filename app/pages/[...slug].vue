@@ -20,7 +20,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <MainNavigation />
-
   <ContentRenderer v-if="page" :value="page" />
 </template>

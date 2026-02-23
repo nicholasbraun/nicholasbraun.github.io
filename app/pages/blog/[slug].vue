@@ -22,8 +22,6 @@ useSeoMeta({
 </script>
 
 <template>
-  <MainNavigation />
-
   <article v-if="page" class="blog-post">
     <time v-if="page.date" :datetime="page.date">
       {{
