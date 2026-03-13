@@ -1,9 +1,38 @@
 <script setup lang="ts">
+const route = useRoute();
+
 const { data: page } = await useAsyncData("page-blog", () => {
   return queryCollection("pages").path("/blog").first();
 });
 
 const allPosts = await queryCollection("blogPosts").order("date", "DESC").all();
+
+const activeTag = computed(() => {
+  const tag = route.query.tag;
+  return typeof tag === "string" && tag.length > 0 ? tag : null;
+});
+
+const allTags = computed(() => {
+  const tags = new Set<string>();
+
+  for (const post of allPosts) {
+    for (const tag of post.tags ?? []) {
+      tags.add(tag);
+    }
+  }
+
+  return [...tags].sort((a, b) => a.localeCompare(b));
+});
+
+const filteredPosts = computed(() => {
+  if (!activeTag.value) {
+    return allPosts;
+  }
+
+  return allPosts.filter((post) =>
+    (post.tags ?? []).includes(activeTag.value as string),
+  );
+});
 
 if (!page.value) {
   throw createError({
@@ -22,9 +51,23 @@ useSeoMeta({
 <template>
   <ContentRenderer v-if="page" :value="page" />
 
+  <nav v-if="allTags.length" aria-label="Blog tags">
+    <p>Tags:</p>
+    <ul class="tags__list">
+      <li class="tags__list-item">
+        <NuxtLink :to="{ path: '/blog' }">All</NuxtLink>
+      </li>
+      <li v-for="tag in allTags" :key="tag" class="tags__list-item">
+        <NuxtLink :to="{ path: '/blog', query: { tag } }">{{ tag }}</NuxtLink>
+      </li>
+    </ul>
+    <p v-if="activeTag">Filtering by: {{ activeTag }}</p>
+  </nav>
+
   <nav>
-    <ul v-if="allPosts">
-      <li v-for="item in allPosts" :key="item.path">
+    <p>Blog posts:</p>
+    <ul v-if="filteredPosts.length">
+      <li v-for="item in filteredPosts" :key="item.path">
         <NuxtLink :to="item.path">
           <time v-if="item.date" :datetime="item.date">
             {{
@@ -37,7 +80,21 @@ useSeoMeta({
           >:
           {{ item.title }}
         </NuxtLink>
+        <span v-if="item.tags?.length"> ({{ item.tags.join(", ") }}) </span>
       </li>
     </ul>
+    <p v-else>No posts found for this tag.</p>
   </nav>
 </template>
+
+<style lang="css" scoped>
+.tags__list {
+  list-style: none;
+  padding: 0;
+}
+
+.tags__list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+</style>

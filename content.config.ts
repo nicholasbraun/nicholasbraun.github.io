@@ -11,6 +11,7 @@ export default defineContentConfig({
       source: "blog/*.md",
       schema: z.object({
         date: z.string(),
+        tags: z.array(z.string()).optional(),
       }),
     }),
     projectPosts: defineCollection({
