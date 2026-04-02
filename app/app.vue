@@ -8,6 +8,8 @@
       <NuxtPage />
     </main>
     <footer class="footer">
+      <span class="footer__path">{{ $route.path }}</span>
+      <span class="footer__spacer"></span>
       <NuxtLink to="/impressum">[Impressum]</NuxtLink>
       <NuxtLink to="/datenschutz">[Datenschutz]</NuxtLink>
     </footer>
@@ -259,25 +261,35 @@ strong {
 }
 
 /* Layout */
-.app {
+#__nuxt {
   max-width: 80ch;
   margin: 0 auto;
   padding: var(--s-5) var(--s-4) var(--s-7);
 }
 
 @media (min-width: 640px) {
-  .app {
+  #__nuxt {
     padding: var(--s-6) var(--s-5) var(--s-8);
   }
 }
 
 .footer {
   margin-top: var(--s-8);
-  padding-top: var(--s-3);
-  border-top: 1px dashed var(--border-color);
+  padding: var(--s-1) var(--s-3);
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
   display: flex;
+  align-items: center;
   gap: var(--s-2);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+}
+
+.footer__path {
+  color: var(--accent);
+}
+
+.footer__spacer {
+  flex: 1;
 }
 
 .footer a {
@@ -288,6 +300,12 @@ strong {
 
 .footer a:hover {
   color: var(--link-color);
+}
+
+.cmd {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: var(--s-1);
 }
 
 .email > :not(span:nth-child(2)) {
