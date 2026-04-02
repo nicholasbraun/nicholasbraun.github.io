@@ -34,6 +34,14 @@ const filteredPosts = computed(() => {
   );
 });
 
+function formatDate(date: string) {
+  const d = new Date(date);
+  const mon = d.toLocaleString("en-US", { month: "short" });
+  const day = String(d.getDate()).padStart(2, " ");
+  const year = d.getFullYear();
+  return `${mon} ${day}  ${year}`;
+}
+
 if (!page.value) {
   throw createError({
     statusCode: 404,
@@ -52,76 +60,133 @@ useSeoMeta({
   <article class="content content--blog">
     <ContentRenderer v-if="page" :value="page" class="intro" />
 
-    <aside v-if="allTags.length" class="tags" aria-label="Blog tags">
-      <p>Tags:</p>
+    <nav v-if="allTags.length" class="tags" aria-label="Blog tags">
+      <span class="tags__label">tags:</span>
       <ul class="tags__list">
         <li class="tags__list-item">
-          <NuxtLink :to="{ path: '/blog' }">All</NuxtLink>
+          <NuxtLink
+            :to="{ path: '/blog' }"
+            :class="{ active: !activeTag }"
+          >[*]</NuxtLink>
         </li>
         <li v-for="tag in allTags" :key="tag" class="tags__list-item">
-          <NuxtLink :to="{ path: '/blog', query: { tag } }">{{ tag }}</NuxtLink>
+          <NuxtLink
+            :to="{ path: '/blog', query: { tag } }"
+            :class="{ active: activeTag === tag }"
+          >[{{ tag }}]</NuxtLink>
         </li>
       </ul>
-      <p v-if="activeTag">Filtering by: {{ activeTag }}</p>
-    </aside>
+    </nav>
 
     <div class="posts">
-      <h2>Posts</h2>
-      <ul v-if="filteredPosts.length">
-        <li v-for="item in filteredPosts" :key="item.path">
-          <NuxtLink :to="item.path">
-            <time v-if="item.date" :datetime="item.date">
-              {{
-                new Date(item.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })
-              }} </time
-            >:
-            {{ item.title }}
+      <p class="posts__header">total {{ filteredPosts.length }}</p>
+      <ul v-if="filteredPosts.length" class="post-list">
+        <li v-for="item in filteredPosts" :key="item.path" class="post-item">
+          <NuxtLink :to="item.path" class="post-link">
+            <span class="post-perm">-rw-r--r--</span>
+            <time v-if="item.date" :datetime="item.date" class="post-date">{{ formatDate(item.date) }}</time>
+            <span class="post-title">{{ item.title }}</span>
           </NuxtLink>
         </li>
       </ul>
-      <p v-else>No posts found for this tag.</p>
+      <p v-else class="posts__empty">No posts found for this tag.</p>
     </div>
   </article>
 </template>
 
 <style lang="css" scoped>
+.intro {
+  margin-bottom: 1.5rem;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tags__label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
 .tags__list {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
 }
 
-.tags__list-item {
-  display: inline-block;
-  margin-right: 10px;
+.tags__list-item a {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-@media screen and (min-width: 900px) {
-  .content {
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-    grid-template-rows: auto 1fr;
-  }
+.tags__list-item a:hover {
+  color: var(--link-color);
+}
 
-  .intro {
-    grid-column: 1;
-    grid-row: 1;
-  }
+.tags__list-item a.active {
+  color: var(--accent);
+}
 
-  .posts {
-    grid-column: 1;
-    grid-row: 2;
-  }
+/* Posts */
+.posts__header {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0 0 0.25rem;
+}
 
-  .tags {
-    grid-column: 2;
-    grid-row: 1 / -1;
-  }
-  .tags__list-item {
-    display: block;
-  }
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-link {
+  display: flex;
+  gap: 0;
+  padding: 0.15rem 0;
+  text-decoration: none;
+  color: var(--text-color);
+  align-items: baseline;
+  transition: color 0.15s ease;
+  font-size: 0.85rem;
+}
+
+.post-link:hover {
+  color: var(--link-color);
+}
+
+.post-perm {
+  color: var(--text-muted);
+  margin-right: 1ch;
+}
+
+.post-date {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  white-space: pre;
+  margin-right: 1ch;
+}
+
+.post-title {
+  color: var(--link-color);
+}
+
+.post-link:hover .post-title {
+  color: var(--link-hover-color);
+}
+
+.posts__empty {
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
 </style>

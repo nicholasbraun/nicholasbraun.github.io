@@ -60,7 +60,10 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         highlight: {
-          theme: "catppuccin-latte",
+          theme: {
+            default: "catppuccin-latte",
+            dark: "catppuccin-mocha",
+          },
           langs: ["go"],
         },
       },

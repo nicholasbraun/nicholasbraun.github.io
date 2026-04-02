@@ -22,6 +22,8 @@ don't cover here, like historic data models like Triple Stores, in deep examples
 of everything and data models specifically for OLAP systems, which are outside
 the scope of my work as a backend engineer.
 
+<hr>
+
 ## Relational Model
 
 Data is organized into **relations** (tables), where each relation is an
@@ -56,6 +58,8 @@ dominant model since the mid-1980s.
 
 **Databases:** PostgreSQL, MySQL, SQLite, Oracle, SQL Server, CockroachDB,
 Google Spanner, Amazon Aurora, SingleStore
+
+<hr>
 
 ## Document Model
 
@@ -94,6 +98,8 @@ with schema-on-read and denormalization.
 **Databases:** MongoDB, Couchbase, Amazon DocumentDB, RethinkDB, CouchDB. Also:
 JSON column support in PostgreSQL, MySQL, SQLite, Oracle
 
+<hr>
+
 ## Property Graph Model
 
 Data is modeled as **vertices** (nodes) and **edges** (relationships), each with
@@ -129,6 +135,8 @@ Queried with languages like Cypher, GQL.
 
 **Databases:** Neo4j, Memgraph, KùzuDB, Amazon Neptune, TigerGraph, Apache AGE
 (on PostgreSQL)
+
+<hr>
 
 ## Event Sourcing (with CQRS)
 
