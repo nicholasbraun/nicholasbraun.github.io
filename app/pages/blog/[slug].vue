@@ -26,15 +26,19 @@ useSeoMeta({
     <NuxtLink to="/blog" class="back-link">cd ..</NuxtLink>
 
     <div class="post-meta">
-      <time v-if="page.date" :datetime="page.date">
-        {{
-          new Date(page.date).toISOString().slice(0, 10)
-        }}
-      </time>
       <div v-if="page.tags?.length" class="post-tags">
         <span class="post-tags__label">tags:</span>
-        <NuxtLink v-for="tag in page.tags" :key="tag" :to="{ path: '/blog', query: { tag } }" class="post-tag">[{{ tag }}]</NuxtLink>
+        <NuxtLink
+          v-for="tag in page.tags"
+          :key="tag"
+          :to="{ path: '/blog', query: { tag } }"
+          class="post-tag"
+          >[{{ tag }}]</NuxtLink
+        >
       </div>
+      <time v-if="page.date" :datetime="page.date">
+        {{ new Date(page.date).toISOString().slice(0, 10) }}
+      </time>
     </div>
 
     <ContentRenderer :value="page" />
@@ -43,7 +47,7 @@ useSeoMeta({
 
 <style lang="css" scoped>
 .blog-post {
-  padding: 2rem 0 3rem;
+  padding-bottom: 4rem;
 }
 
 .back-link {
@@ -62,7 +66,7 @@ useSeoMeta({
 .post-meta {
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.15rem;
 }
 
 .post-tags {
@@ -70,7 +74,7 @@ useSeoMeta({
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.35rem;
-  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .post-tags__label {
