@@ -6,7 +6,7 @@ const { data: nav } = await useAsyncData("navigation", () => {
 
 <template>
   <nav>
-    <span class="prompt">&gt;</span>
+    <span class="prompt">&gt;<span class="cursor">_</span></span>
     <ul v-if="nav" class="main-nav">
       <li v-for="item in nav" :key="item.path" class="main-nav-item">
         <NuxtLink :to="item.path">[{{ item.title }}]</NuxtLink>
@@ -28,6 +28,14 @@ nav {
 .prompt {
   color: var(--accent);
   font-weight: 700;
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 .main-nav {
