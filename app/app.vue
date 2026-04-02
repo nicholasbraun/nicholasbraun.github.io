@@ -13,7 +13,8 @@
 <style>
 :root {
   color-scheme: light dark;
-  --font-body: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+  --font-body:
+    ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
     "DejaVu Sans Mono", monospace;
 
   /* Spacing scale */
@@ -255,7 +256,7 @@ strong {
 
 /* Layout */
 .app {
-  max-width: 680px;
+  max-width: 80ch;
   margin: 0 auto;
   padding: var(--s-5) var(--s-4) var(--s-7);
 }

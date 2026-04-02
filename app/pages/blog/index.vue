@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
+const config = useRuntimeConfig();
+const siteUrl = config.public.siteUrl as string;
 
 const { data: page } = await useAsyncData("page-blog", () => {
   return queryCollection("pages").path("/blog").first();
@@ -53,6 +55,13 @@ if (!page.value) {
 useSeoMeta({
   title: page.value.title,
   description: page.value.description,
+  ogTitle: page.value.title,
+  ogDescription: page.value.description,
+  ogUrl: `${siteUrl}/blog`,
+});
+
+useHead({
+  link: [{ rel: "canonical", href: `${siteUrl}/blog` }],
 });
 </script>
 

@@ -1,5 +1,8 @@
 ---
 title: "Hello World"
+description:
+  "Why I started this blog — collecting technical book notes, sharing what I
+  learn about software engineering, and practising writing."
 date: 2026-02-21
 navigation:
   title: Hello World

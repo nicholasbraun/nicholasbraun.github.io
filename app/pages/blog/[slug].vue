@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const route = useRoute();
+const config = useRuntimeConfig();
+const siteUrl = config.public.siteUrl as string;
 const slug = route.params.slug as string;
 const path = "/blog/" + slug;
 
@@ -15,9 +17,41 @@ if (!page.value) {
   });
 }
 
+const canonicalUrl = `${siteUrl}${page.value.path}`;
+
 useSeoMeta({
   title: page.value.title,
   description: page.value.description,
+  ogTitle: page.value.title,
+  ogDescription: page.value.description,
+  ogUrl: canonicalUrl,
+  ogType: "article",
+  articlePublishedTime: page.value.date,
+  articleAuthor: "Nicholas Braun",
+  articleTag: page.value.tags,
+});
+
+useHead({
+  link: [{ rel: "canonical", href: canonicalUrl }],
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: page.value.title,
+        description: page.value.description,
+        datePublished: page.value.date,
+        author: {
+          "@type": "Person",
+          name: "Nicholas Braun",
+          url: siteUrl,
+        },
+        url: canonicalUrl,
+        keywords: page.value.tags?.join(", "),
+      }),
+    },
+  ],
 });
 </script>
 

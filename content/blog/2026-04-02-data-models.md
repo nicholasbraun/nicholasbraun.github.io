@@ -1,5 +1,8 @@
 ---
 title: "Data Models"
+description:
+  "Notes on data models from Designing Data Intensive Applications — relational,
+  document, graph and event sourcing with trade-offs and use cases."
 date: 2026-04-02
 navigation:
   title: Data Models

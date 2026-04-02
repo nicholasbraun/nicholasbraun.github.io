@@ -12,7 +12,20 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
+      meta: [
+        {
+          name: "description",
+          content:
+            "Nicholas Braun — backend engineer specializing in distributed systems, Go and Node.js.",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "Nicholas Braun" },
+        { property: "og:locale", content: "en_US" },
+        { name: "twitter:card", content: "summary" },
+        { name: "author", content: "Nicholas Braun" },
+      ],
       link: [
+        { rel: "preconnect", href: "https://plausible.io" },
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         {
           rel: "icon",
@@ -54,7 +67,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       autoSubfolderIndex: false,
-      routes: ["/rss.xml"],
+      routes: ["/rss.xml", "/sitemap.xml"],
     },
   },
   content: {
