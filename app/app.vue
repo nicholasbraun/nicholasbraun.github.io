@@ -7,6 +7,10 @@
     <main id="main-content">
       <NuxtPage />
     </main>
+    <footer class="footer">
+      <NuxtLink to="/impressum">[Impressum]</NuxtLink>
+      <NuxtLink to="/datenschutz">[Datenschutz]</NuxtLink>
+    </footer>
   </div>
 </template>
 
@@ -265,6 +269,25 @@ strong {
   .app {
     padding: var(--s-6) var(--s-5) var(--s-8);
   }
+}
+
+.footer {
+  margin-top: var(--s-8);
+  padding-top: var(--s-3);
+  border-top: 1px dashed var(--border-color);
+  display: flex;
+  gap: var(--s-2);
+  font-size: 0.85rem;
+}
+
+.footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer a:hover {
+  color: var(--link-color);
 }
 
 .email > :not(span:nth-child(2)) {
