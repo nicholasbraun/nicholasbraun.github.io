@@ -45,4 +45,8 @@ a {
   max-width: 900px;
   padding: 16px;
 }
+
+.email > :not(span:nth-child(2)) {
+  display: none;
+}
 </style>
