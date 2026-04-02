@@ -1,10 +1,13 @@
 <template>
-  <main class="app">
+  <div class="app">
     <NuxtRouteAnnouncer />
 
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <MainNavigation />
-    <NuxtPage />
-  </main>
+    <main id="main-content">
+      <NuxtPage />
+    </main>
+  </div>
 </template>
 
 <style>
@@ -41,7 +44,7 @@
     /* Catppuccin Mocha */
     --bg-color: #1e1e2e;
     --text-color: #cdd6f4;
-    --text-muted: #6c7086;
+    --text-muted: #7f849c;
     --link-color: #89b4fa;
     --link-hover-color: #b4befe;
     --accent: #cba6f7;
@@ -85,6 +88,34 @@ a {
 
 a:hover {
   color: var(--link-hover-color);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  font-size: 0.85rem;
+  padding: var(--s-2) var(--s-4);
+  background: var(--bg-color);
+  color: var(--link-color);
+  border: 1px solid var(--border-color);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  display: inline-block;
+  margin-bottom: var(--s-2);
 }
 
 /* Typography */

@@ -23,7 +23,7 @@ useSeoMeta({
 
 <template>
   <article v-if="page" class="blog-post">
-    <NuxtLink to="/blog" class="back-link">cd ..</NuxtLink>
+    <NuxtLink to="/blog" class="back-link" aria-label="Back to blog">cd ..</NuxtLink>
 
     <div class="post-meta">
       <div v-if="page.tags?.length" class="post-tags">

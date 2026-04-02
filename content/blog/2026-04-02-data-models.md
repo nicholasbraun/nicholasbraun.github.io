@@ -13,7 +13,7 @@ tags:
 
 The long wait is over, it is finally here! No, not Winds of Winter, but the
 second edition of
-<a target='_blank' href='https://www.ebooks.com/en-de/book/347309662/designing-data-intensive-applications/martin-kleppmann/'>Designing
+<a target='_blank' rel='noopener noreferrer' href='https://www.ebooks.com/en-de/book/347309662/designing-data-intensive-applications/martin-kleppmann/' aria-label='Designing Data Intensive Applications (opens in new tab)'>Designing
 Data Intensive Applications</a>.
 
 Here are my notes on data models. Very brief summary, trade-offs, use cases and
