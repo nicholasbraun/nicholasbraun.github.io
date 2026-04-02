@@ -23,6 +23,10 @@ nav {
   padding: var(--s-3) 0;
   margin-bottom: var(--s-6);
   border-bottom: 1px dashed var(--border-color);
+  position: sticky;
+  top: 0;
+  background: var(--bg-color);
+  z-index: 10;
 }
 
 .prompt {
