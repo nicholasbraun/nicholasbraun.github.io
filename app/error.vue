@@ -18,18 +18,15 @@ useSeoMeta({
     <a href="#main-content" class="skip-link">Skip to content</a>
     <MainNavigation />
     <main id="main-content" class="error-page">
-      <pre class="error-output">$ cat {{ $route.path }}
-bash: {{ $route.path }}: No such file or directory
+      <pre class="error-output">
+$ cd ~{{ $route.path }}
+zsh: ~{{ $route.path }}: No such file or directory
 
-exit code: {{ error.statusCode }}</pre>
+exit code: {{ error.statusCode }}</pre
+      >
       <NuxtLink to="/" class="error-link">cd ~</NuxtLink>
     </main>
-    <footer class="footer">
-      <span class="footer__path">{{ $route.path }}</span>
-      <span class="footer__spacer"></span>
-      <NuxtLink to="/impressum">[Impressum]</NuxtLink>
-      <NuxtLink to="/datenschutz">[Datenschutz]</NuxtLink>
-    </footer>
+    <SiteFooter />
   </div>
 </template>
 
