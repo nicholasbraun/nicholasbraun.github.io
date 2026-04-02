@@ -2,6 +2,7 @@
   <footer class="footer">
     <span class="footer__path">~{{ $route.path }}</span>
     <span class="footer__spacer"></span>
+    <NuxtLink to="/rss.xml" target="_blank">[RSS]</NuxtLink>
     <NuxtLink to="/impressum">[Impressum]</NuxtLink>
     <NuxtLink to="/datenschutz">[Datenschutz]</NuxtLink>
   </footer>
