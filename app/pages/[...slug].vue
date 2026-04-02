@@ -16,6 +16,8 @@ if (!page.value) {
   });
 }
 
+const isHome = route.path === "/";
+
 useSeoMeta({
   title: page.value.title,
   description: page.value.description,
@@ -25,7 +27,35 @@ useSeoMeta({
 });
 
 useHead({
+  titleTemplate: isHome ? "%s" : undefined,
   link: [{ rel: "canonical", href: canonicalUrl }],
+  script: isHome
+    ? [
+        {
+          type: "application/ld+json",
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Nicholas Braun",
+            url: siteUrl,
+          }),
+        },
+        {
+          type: "application/ld+json",
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Nicholas Braun",
+            url: siteUrl,
+            jobTitle: "Software Engineer",
+            sameAs: [
+              "https://github.com/nicholasbraun",
+              "https://www.linkedin.com/in/nicholas-braun-dev/",
+            ],
+          }),
+        },
+      ]
+    : [],
 });
 </script>
 

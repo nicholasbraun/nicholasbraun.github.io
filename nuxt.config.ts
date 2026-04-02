@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
+      titleTemplate: "%s | Nicholas Braun",
       meta: [
         {
           name: "description",
@@ -21,6 +22,10 @@ export default defineNuxtConfig({
         { property: "og:type", content: "website" },
         { property: "og:site_name", content: "Nicholas Braun" },
         { property: "og:locale", content: "en_US" },
+        {
+          property: "og:image",
+          content: "https://nicholasbraun.de/og-image.png",
+        },
         { name: "twitter:card", content: "summary" },
         { name: "author", content: "Nicholas Braun" },
       ],
