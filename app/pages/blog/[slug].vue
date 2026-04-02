@@ -31,9 +31,10 @@ useSeoMeta({
           new Date(page.date).toISOString().slice(0, 10)
         }}
       </time>
-      <span v-if="page.tags?.length" class="post-tags">
-        <span v-for="tag in page.tags" :key="tag">[{{ tag }}]</span>
-      </span>
+      <div v-if="page.tags?.length" class="post-tags">
+        <span class="post-tags__label">tags:</span>
+        <NuxtLink v-for="tag in page.tags" :key="tag" :to="{ path: '/blog', query: { tag } }" class="post-tag">[{{ tag }}]</NuxtLink>
+      </div>
     </div>
 
     <ContentRenderer :value="page" />
@@ -59,9 +60,6 @@ useSeoMeta({
 }
 
 .post-meta {
-  display: flex;
-  gap: 1rem;
-  align-items: baseline;
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-bottom: 1.5rem;
@@ -69,6 +67,23 @@ useSeoMeta({
 
 .post-tags {
   display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
   gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.post-tags__label {
+  color: var(--text-muted);
+}
+
+.post-tag {
+  white-space: nowrap;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.post-tag:hover {
+  color: var(--accent);
 }
 </style>
