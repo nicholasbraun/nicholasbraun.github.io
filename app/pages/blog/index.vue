@@ -96,15 +96,15 @@ useSeoMeta({
 
 <style lang="css" scoped>
 .intro {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--s-5);
 }
 
 /* Tags */
 .tags {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  gap: var(--s-2);
+  margin-bottom: var(--s-5);
   flex-wrap: wrap;
 }
 
@@ -119,7 +119,7 @@ useSeoMeta({
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: var(--s-1);
 }
 
 .tags__list-item a {
@@ -141,7 +141,7 @@ useSeoMeta({
 .posts__header {
   color: var(--text-muted);
   font-size: 0.85rem;
-  margin: 0 0 0.25rem;
+  margin: 0 0 var(--s-1);
 }
 
 .post-list {
@@ -153,7 +153,7 @@ useSeoMeta({
 .post-link {
   display: flex;
   gap: 0;
-  padding: 0.15rem 0;
+  padding: var(--s-1) 0;
   text-decoration: none;
   color: var(--text-color);
   align-items: baseline;

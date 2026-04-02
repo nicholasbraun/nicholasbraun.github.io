@@ -47,7 +47,7 @@ useSeoMeta({
 
 <style lang="css" scoped>
 .blog-post {
-  padding-bottom: 4rem;
+  padding-bottom: var(--s-8);
 }
 
 .back-link {
@@ -55,7 +55,7 @@ useSeoMeta({
   font-size: 0.85rem;
   color: var(--text-muted);
   text-decoration: none;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--s-5);
   transition: color 0.15s ease;
 }
 
@@ -66,15 +66,15 @@ useSeoMeta({
 .post-meta {
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 0.15rem;
+  margin-bottom: var(--s-1);
 }
 
 .post-tags {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.35rem;
-  margin-bottom: 0.75rem;
+  gap: var(--s-1);
+  margin-bottom: var(--s-3);
 }
 
 .post-tags__label {

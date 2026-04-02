@@ -13,6 +13,16 @@
   --font-body: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
     "DejaVu Sans Mono", monospace;
 
+  /* Spacing scale */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+
   /* Catppuccin Latte */
   --bg-color: #eff1f5;
   --text-color: #4c4f69;
@@ -86,14 +96,14 @@ h1 {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.3;
-  margin: 0 0 0.25rem;
+  margin: 0 0 var(--s-1);
 }
 
 h2 {
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.3;
-  margin: 2rem 0 0.75rem;
+  margin: var(--s-6) 0 var(--s-3);
   color: var(--accent);
 }
 
@@ -101,39 +111,39 @@ h3 {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
-  margin: 1.5rem 0 0.5rem;
+  margin: var(--s-5) 0 var(--s-2);
 }
 
 h4 {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
-  margin: 1.25rem 0 0.5rem;
+  margin: var(--s-4) 0 var(--s-2);
 }
 
 p {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--s-4);
 }
 
 ul,
 ol {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--s-4);
   padding-left: 1.5em;
 }
 
 li {
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--s-1);
 }
 
 li > ul,
 li > ol {
-  margin-top: 0.25rem;
+  margin-top: var(--s-1);
   margin-bottom: 0;
 }
 
 blockquote {
-  margin: 1.25rem 0;
-  padding: 0 0 0 1.25rem;
+  margin: var(--s-4) 0;
+  padding: 0 0 0 var(--s-4);
   border-left: 2px solid var(--accent);
   color: var(--text-muted);
 }
@@ -151,15 +161,15 @@ blockquote p:last-child {
 pre {
   font-size: 0.85rem;
   line-height: 1.6;
-  margin: 1.25rem 0;
-  padding: 1rem;
+  margin: var(--s-4) 0;
+  padding: var(--s-4);
   overflow-x: auto;
   border: 1px solid var(--border-color);
 }
 
 hr {
   border: none;
-  margin: 2rem 0;
+  margin: var(--s-6) 0;
   color: var(--border-color);
   text-align: center;
 }
@@ -173,13 +183,13 @@ hr::before {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.25rem 0;
+  margin: var(--s-4) 0;
   font-size: 0.9rem;
 }
 
 th,
 td {
-  padding: 0.4rem 0.75rem;
+  padding: var(--s-2) var(--s-3);
   border-bottom: 1px solid var(--border-color);
   text-align: left;
 }
@@ -192,7 +202,7 @@ th {
 img {
   max-width: 100%;
   height: auto;
-  margin: 1.25rem 0;
+  margin: var(--s-4) 0;
 }
 
 strong {
@@ -216,12 +226,12 @@ strong {
 .app {
   max-width: 680px;
   margin: 0 auto;
-  padding: 24px 20px 48px;
+  padding: var(--s-5) var(--s-4) var(--s-7);
 }
 
 @media (min-width: 640px) {
   .app {
-    padding: 32px 24px 64px;
+    padding: var(--s-6) var(--s-5) var(--s-8);
   }
 }
 

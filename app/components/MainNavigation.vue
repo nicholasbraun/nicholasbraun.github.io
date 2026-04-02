@@ -19,9 +19,9 @@ const { data: nav } = await useAsyncData("navigation", () => {
 nav {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 0;
-  margin-bottom: 2rem;
+  gap: var(--s-3);
+  padding: var(--s-3) 0;
+  margin-bottom: var(--s-6);
   border-bottom: 1px dashed var(--border-color);
 }
 
@@ -35,7 +35,7 @@ nav {
   padding: 0;
   display: flex;
   margin: 0;
-  gap: 0.5rem;
+  gap: var(--s-2);
 }
 
 .main-nav-item {
