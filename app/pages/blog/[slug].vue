@@ -57,7 +57,7 @@ useHead({
 
 <template>
   <article v-if="page" class="blog-post">
-    <NuxtLink to="/blog" class="back-link" aria-label="Back to blog">cd ..</NuxtLink>
+    <Breadcrumb />
 
     <div class="post-meta">
       <div v-if="page.tags?.length" class="post-tags">
@@ -82,19 +82,6 @@ useHead({
 <style lang="css" scoped>
 .blog-post {
   padding-bottom: var(--s-8);
-}
-
-.back-link {
-  display: inline-block;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  margin-bottom: var(--s-5);
-  transition: color 0.15s ease;
-}
-
-.back-link:hover {
-  color: var(--accent);
 }
 
 .post-meta {

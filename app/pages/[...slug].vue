@@ -60,5 +60,8 @@ useHead({
 </script>
 
 <template>
-  <ContentRenderer v-if="page" :value="page" />
+  <div>
+    <Breadcrumb v-if="!isHome" />
+    <ContentRenderer v-if="page" :value="page" />
+  </div>
 </template>

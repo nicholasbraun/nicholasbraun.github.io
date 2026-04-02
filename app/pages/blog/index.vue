@@ -67,6 +67,7 @@ useHead({
 
 <template>
   <article class="content content--blog">
+    <Breadcrumb />
     <ContentRenderer v-if="page" :value="page" class="intro" />
 
     <nav v-if="allTags.length" class="tags" aria-label="Blog tags">
