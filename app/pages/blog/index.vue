@@ -64,16 +64,16 @@ useSeoMeta({
       <span class="tags__label">tags:</span>
       <ul class="tags__list">
         <li class="tags__list-item">
-          <NuxtLink
-            :to="{ path: '/blog' }"
-            :class="{ active: !activeTag }"
-          >[*]</NuxtLink>
+          <NuxtLink :to="{ path: '/blog' }" :class="{ active: !activeTag }"
+            >[*]</NuxtLink
+          >
         </li>
         <li v-for="tag in allTags" :key="tag" class="tags__list-item">
           <NuxtLink
             :to="{ path: '/blog', query: { tag } }"
             :class="{ active: activeTag === tag }"
-          >[{{ tag }}]</NuxtLink>
+            >[{{ tag }}]</NuxtLink
+          >
         </li>
       </ul>
     </nav>
@@ -84,7 +84,9 @@ useSeoMeta({
         <li v-for="item in filteredPosts" :key="item.path" class="post-item">
           <NuxtLink :to="item.path" class="post-link">
             <span class="post-perm">-rw-r--r--</span>
-            <time v-if="item.date" :datetime="item.date" class="post-date">{{ formatDate(item.date) }}</time>
+            <time v-if="item.date" :datetime="item.date" class="post-date">{{
+              formatDate(item.date)
+            }}</time>
             <span class="post-title">{{ item.title }}</span>
           </NuxtLink>
         </li>
@@ -150,10 +152,13 @@ useSeoMeta({
   margin: 0;
 }
 
+.post-item {
+  margin: 0;
+}
+
 .post-link {
   display: flex;
   gap: 0;
-  padding: var(--s-1) 0;
   text-decoration: none;
   color: var(--text-color);
   align-items: baseline;
