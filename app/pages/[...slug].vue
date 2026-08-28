@@ -47,7 +47,7 @@ useHead({
             "@type": "Person",
             name: "Nicholas Braun",
             url: siteUrl,
-            jobTitle: "Software Engineer",
+            jobTitle: "Fullstack Developer",
             sameAs: [
               "https://github.com/nicholasbraun",
               "https://www.linkedin.com/in/nicholas-braun-dev/",
