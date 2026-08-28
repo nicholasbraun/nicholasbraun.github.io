@@ -9,6 +9,17 @@ const props = defineProps<{
 useSeoMeta({
   title: `${props.error.statusCode} - Not Found`,
 });
+
+const route = useRoute();
+
+// The pageview alone cannot be told apart from a real page, so the miss is
+// reported separately. Mounted, not setup: this page is prerendered as
+// 404.html and served for every unknown path.
+onMounted(() => {
+  if (props.error.statusCode !== 404) return;
+
+  trackEvent("404", { path: route.path });
+});
 </script>
 
 <template>

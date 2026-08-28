@@ -15,6 +15,7 @@ function reveal() {
 
 function open(event: MouseEvent) {
   reveal();
+  trackEvent("Email Click");
   // The browser resolved the default action before `href` existed, so the
   // navigation has to be done by hand.
   event.preventDefault();

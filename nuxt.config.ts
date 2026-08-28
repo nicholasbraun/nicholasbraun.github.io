@@ -1,4 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// Handed to the Plausible loader in the <head> snippet below. The options have
+// to ride along on that first init() call: the loader only stashes them, and
+// the real script reads them once, when it finishes loading.
+const plausibleOptions = {
+  outboundLinks: true,
+  // Replaces Plausible's default extension list rather than extending it, so
+  // it names every extension the site actually links to.
+  fileDownloads: { fileExtensions: ["xml", "pdf"] },
+};
+
 export default defineNuxtConfig({
   modules: ["@nuxt/content"],
   devtools: { enabled: true },
@@ -65,7 +76,9 @@ export default defineNuxtConfig({
         },
         {
           innerHTML:
-            "window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()",
+            "window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init(" +
+            JSON.stringify(plausibleOptions) +
+            ")",
         },
       ],
     },

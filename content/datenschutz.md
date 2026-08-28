@@ -37,6 +37,11 @@ Folgende Daten werden anonymisiert erfasst:
 - Browsertyp und Betriebssystem
 - Gerätetyp (Desktop/Mobil)
 - Land des Besuchers (basierend auf anonymisierter IP-Adresse)
+- Klicks auf externe Links, auf die angezeigte E-Mail-Adresse und auf Dateien
+  wie den RSS-Feed
+- Aufrufe nicht vorhandener Seiten (Fehlerseite 404)
+
+Diese Interaktionen werden als anonyme Ereignisse ohne Personenbezug gezählt.
 
 Die IP-Adresse wird zu keinem Zeitpunkt gespeichert oder an Dritte
 weitergegeben. Plausible wird in der EU gehostet und ist vollständig
