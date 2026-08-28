@@ -14,8 +14,7 @@ Amalienstr. 71\
 
 ## Kontakt
 
-E-Mail:
-<span class='email'>hallo@<span>notmydomain.</span><span>nicholasbraun.</span><span>alsonotmydomain.</span>de</span>
+E-Mail: :email-link{}
 
 ## Haftungsausschluss
 

@@ -273,8 +273,4 @@ strong {
   font-size: 0.85rem;
   margin-bottom: var(--s-1);
 }
-
-.email > :not(span:nth-child(2)) {
-  display: none;
-}
 </style>
