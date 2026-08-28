@@ -24,3 +24,8 @@ logs
 !.env.example
 
 pnpm-lock.yaml
+
+# Local wasm build artifacts — regenerate with wasm/build.sh.
+# The deployed copies in public/wasm/<module>/ ARE committed.
+wasm/*/main.wasm
+wasm/*/wasm_exec.js
