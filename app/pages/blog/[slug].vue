@@ -27,7 +27,7 @@ useSeoMeta({
   ogUrl: canonicalUrl,
   ogType: "article",
   articlePublishedTime: page.value.date,
-  articleAuthor: "Nicholas Braun",
+  articleAuthor: ["Nicholas Braun"],
   articleTag: page.value.tags,
 });
 
