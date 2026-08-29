@@ -48,6 +48,11 @@ useHead({
             name: "Nicholas Braun",
             url: siteUrl,
             jobTitle: "Fullstack Developer",
+            alumniOf: {
+              "@type": "CollegeOrUniversity",
+              name: "Technische Universität Berlin",
+              sameAs: "https://www.tu.berlin/",
+            },
             sameAs: [
               "https://github.com/nicholasbraun",
               "https://www.linkedin.com/in/nicholas-braun-dev/",
