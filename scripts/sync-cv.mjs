@@ -6,6 +6,9 @@
  * Reactive Resume runs in Docker on this machine only, so CI can't reach it —
  * the PDF has to be generated here and committed rather than built in Actions.
  *
+ * Paths that only exist on one machine are read from .env, which is
+ * gitignored — this repo is public. Copy .env.example to .env to set them up.
+ *
  * Usage: npm run sync-cv
  */
 import { readFile, writeFile } from "node:fs/promises";
@@ -14,31 +17,46 @@ import { homedir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const MCP_CONFIG =
-  process.env.RXRESUME_MCP_CONFIG ??
-  path.join(homedir(), "Documents/bewerbung/freelance/.mcp.json");
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
+const OUT = path.join(ROOT, "public", "nicholas-braun-cv.pdf");
+const ENV_FILE = path.join(ROOT, ".env");
+
+if (existsSync(ENV_FILE)) process.loadEnvFile(ENV_FILE);
 
 // The resume is found by tag rather than id so that rebuilding it in the app
 // doesn't silently break this script.
-const TAG = "public";
-
-const OUT = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "public",
-  "nicholas-braun-cv.pdf",
-);
+const TAG = "master";
 
 function fail(message) {
   console.error(`sync-cv: ${message}`);
   process.exit(1);
 }
 
+/** Lets .env hold a path in the ~/... form it is normally typed in. */
+function expandHome(value) {
+  return value.startsWith("~/") ? path.join(homedir(), value.slice(2)) : value;
+}
+
+function requireEnv(name) {
+  const value = process.env[name];
+  if (!value) {
+    fail(
+      `${name} is not set — copy .env.example to .env and fill it in ` +
+        `(or pass ${name} in the environment)`,
+    );
+  }
+  return expandHome(value);
+}
+
+const MCP_CONFIG = requireEnv("RXRESUME_MCP_CONFIG");
+
+// Only used to make the "instance is down" message actionable, so it stays
+// optional rather than failing a sync that would otherwise work.
+const RXRESUME_DIR = process.env.RXRESUME_DIR;
+
 async function readConfig() {
   if (!existsSync(MCP_CONFIG)) {
-    fail(
-      `no MCP config at ${MCP_CONFIG} (set RXRESUME_MCP_CONFIG to override)`,
-    );
+    fail(`no MCP config at ${MCP_CONFIG} (from RXRESUME_MCP_CONFIG)`);
   }
   let cfg;
   try {
@@ -63,9 +81,10 @@ async function assertInstanceIsUp(baseUrl) {
       signal: AbortSignal.timeout(5000),
     });
   } catch {
+    const where = RXRESUME_DIR ? `cd ${expandHome(RXRESUME_DIR)} && ` : "";
     fail(
       `no response from ${baseUrl} — start it with ` +
-        `(cd ~/Documents/bewerbung/freelance/rxresume && docker compose up -d)`,
+        `(${where}docker compose up -d)`,
     );
   }
   const body = await res.json().catch(() => ({}));
