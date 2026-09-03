@@ -12,12 +12,23 @@ const { data: nav } = await useAsyncData("navigation", () => {
         <NuxtLink :to="item.path">[{{ item.title }}]</NuxtLink>
       </li>
     </ul>
+    <!-- Kept out of the generated list: the CV is a static file in public/,
+         not a content page. target="_blank" also keeps NuxtLink from routing
+         it through the catch-all page, which would 404. -->
+    <NuxtLink
+      class="cv-link"
+      to="/nicholas-braun-cv.pdf"
+      target="_blank"
+      aria-label="CV (PDF, opens in a new tab)"
+      >[cv]</NuxtLink
+    >
   </nav>
 </template>
 
 <style scoped>
 nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--s-3);
   padding: var(--s-3) 0;
@@ -54,18 +65,28 @@ nav {
   margin: 0;
 }
 
-.main-nav-item a {
+.main-nav-item a,
+.cv-link {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.15s ease;
 }
 
-.main-nav-item a:hover {
+.main-nav-item a:hover,
+.cv-link:hover {
   color: var(--link-color);
 }
 
 .main-nav-item a.router-link-active {
   color: var(--text-color);
+}
+
+/* Sits opposite the page links, and wraps onto its own right-aligned line on
+   screens too narrow to hold both — the page links already fill the row at
+   320px. The download itself is counted by Plausible's fileDownloads option,
+   so no click handler is needed here. */
+.cv-link {
+  margin-left: auto;
 }
 </style>
