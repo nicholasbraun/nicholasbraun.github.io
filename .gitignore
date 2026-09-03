@@ -18,6 +18,9 @@ logs
 .fleet
 .idea
 
+# Snapshots, console logs and screenshots written by the Playwright MCP server
+.playwright-mcp
+
 # Local env files
 .env
 .env.*
