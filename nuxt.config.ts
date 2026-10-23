@@ -10,6 +10,12 @@ const plausibleOptions = {
   fileDownloads: { fileExtensions: ["xml", "pdf"] },
 };
 
+// The blog stays published at /blog, but while this is false nothing points to
+// it: no RSS link in the footer or <head>, no blog entries in the sitemap. To
+// bring it back, set this to true and restore the navigation entry in
+// content/4.blog.md.
+const showBlog = false;
+
 export default defineNuxtConfig({
   modules: ["@nuxt/content"],
   devtools: { enabled: true },
@@ -18,6 +24,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: "https://nicholasbraun.de",
+      showBlog,
     },
   },
   app: {
@@ -62,12 +69,16 @@ export default defineNuxtConfig({
           href: "/apple-touch-icon.png",
         },
         { rel: "manifest", href: "/site.webmanifest" },
-        {
-          rel: "alternate",
-          type: "application/rss+xml",
-          title: "RSS Feed",
-          href: "/rss.xml",
-        },
+        ...(showBlog
+          ? [
+              {
+                rel: "alternate",
+                type: "application/rss+xml",
+                title: "RSS Feed",
+                href: "/rss.xml",
+              },
+            ]
+          : []),
       ],
       script: [
         {
