@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "Nicholas Braun — fullstack developer with a strong backend focus. Go, Node.js and TypeScript on the server, React and Vue on the client.",
+            "Nicholas Braun — fullstack engineer with a strong backend focus. Go, Node.js and TypeScript on the server, React and Vue on the client.",
         },
         { property: "og:type", content: "website" },
         { property: "og:site_name", content: "Nicholas Braun" },

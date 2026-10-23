@@ -47,7 +47,7 @@ useHead({
             "@type": "Person",
             name: "Nicholas Braun",
             url: siteUrl,
-            jobTitle: "Fullstack Developer",
+            jobTitle: "Fullstack Engineer",
             alumniOf: {
               "@type": "CollegeOrUniversity",
               name: "Technische Universität Berlin",
