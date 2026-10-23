@@ -5,10 +5,16 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const siteUrl = config.public.siteUrl.replace(/\/$/, "");
 
-  const pages = await queryCollection(event, "pages").all();
-  const posts = await queryCollection(event, "blogPosts")
-    .order("date", "DESC")
-    .all();
+  // While the blog is hidden (see showBlog in nuxt.config.ts), leave the blog
+  // index and its posts out so search engines aren't pointed at them.
+  const showBlog = config.public.showBlog;
+
+  const pages = (await queryCollection(event, "pages").all()).filter(
+    (page) => showBlog || page.path !== "/blog",
+  );
+  const posts = showBlog
+    ? await queryCollection(event, "blogPosts").order("date", "DESC").all()
+    : [];
 
   const urls = [
     ...pages.map((page) => ({
