@@ -89,4 +89,30 @@ nav {
 .cv-link {
   margin-left: auto;
 }
+
+/* With four page links the row no longer fits common phone widths (390px)
+   at full size, so narrow screens get slightly smaller links and tighter
+   gaps. Below ~350px the cv link still wraps onto its own line as above. */
+@media (max-width: 440px) {
+  nav {
+    gap: var(--s-2);
+  }
+
+  .main-nav {
+    gap: var(--s-1);
+  }
+
+  .main-nav-item a,
+  .cv-link {
+    font-size: 0.8rem;
+  }
+}
+
+/* Keeps the page links on the prompt's row down to 320px. */
+@media (max-width: 350px) {
+  .main-nav-item a,
+  .cv-link {
+    font-size: 0.75rem;
+  }
+}
 </style>
