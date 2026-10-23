@@ -140,6 +140,12 @@ h2 {
   color: var(--accent);
 }
 
+/* Keep a heading reached via a #anchor link clear of the sticky navigation. */
+h2[id],
+h3[id] {
+  scroll-margin-top: 4.5rem;
+}
+
 h3 {
   font-size: 1rem;
   font-weight: 600;
